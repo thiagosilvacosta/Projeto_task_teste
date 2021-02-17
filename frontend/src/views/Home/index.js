@@ -2,7 +2,7 @@ import React from 'react'
 
 
 function Home() {
-  return  <h1>Você está na Home!</h1>
+  return  <h1>Home Ok!</h1>
 }
 
 export default Home;
