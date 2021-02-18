@@ -12,6 +12,7 @@ export const Container = styled.div `
     flex-direction: column;   
     margin: 25px;
     cursor: pointer;
+    transition: all 0.3s ease;
 
     &:hover{
         opacity: 0.5;
