@@ -7,7 +7,7 @@ export const Container = styled.div `
     background: #20295f;
     border-top: solid 5px #EE6B26;
     
-    position:abosolut;
+    position:fixed;
     bottom:0px;
     
     display: flex;

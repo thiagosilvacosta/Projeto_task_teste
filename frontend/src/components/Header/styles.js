@@ -22,11 +22,11 @@ img{
 }
 ` 
 export const RightSide = styled.div `
-width: 50%;
-height 70px;
-display: flex;
-align-items: center;
-justify-content: flex-end;
+    width: 50%;
+    height 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
 a{
     color:#FFF;
@@ -41,8 +41,13 @@ a{
 }
 
 #notification{
-    img{
-        width: 30px;
+    background:none;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    button,img{
+        width: 25px;
+        
     }
   
     &:hover{
