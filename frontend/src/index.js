@@ -6,7 +6,7 @@ import Task from './views/Task';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Task />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );
