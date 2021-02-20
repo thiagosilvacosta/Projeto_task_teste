@@ -15,7 +15,7 @@ function TaskCard({title, type, when}) {
       <S.Container>
         <S.TopCard>
           <img src={TypeIcons[type]} alt="Icone da tarefa"/>
-          <h3>{title}</h3>
+          <h4>{title}</h4>
         </S.TopCard>
         <S.BottomCard>
           <strong>{date}</strong>

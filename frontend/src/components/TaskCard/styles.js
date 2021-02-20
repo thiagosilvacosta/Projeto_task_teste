@@ -13,6 +13,8 @@ export const Container = styled.div `
     margin: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
+    
+
 
     &:hover{
         opacity: 0.5;
@@ -24,6 +26,9 @@ export const Container = styled.div `
     align-items:center;
     justify-content: center;
     flex-direction: column;   
+    img{
+        width: 50px;
+    }
 
  `
  export const BottomCard = styled.div `
