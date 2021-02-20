@@ -27,6 +27,11 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 
+a{
+    text-decoration:none;
+    color: #20295F;
+}
+
 `
 
 export const Title = styled.div `

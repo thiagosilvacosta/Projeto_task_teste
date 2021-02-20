@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import * as S from  './styles'
+import {format} from 'date-fns' 
 import api from '../../services/api'
-
+import { Redirect } from 'react-router-dom'
 
 // Importando components
 
@@ -14,8 +15,8 @@ import iconClock from '../../assets/clock.png';
 
 
 
-function Task() {
-
+function Task({match}) {
+  const [redirect, setRedirect]= useState(false);
   const [lateCount, setLateCount] = useState();
   const [type, setType] = useState();
   const [id, setId]= useState();
@@ -35,8 +36,34 @@ function Task() {
     })
   }
 
+  async function LoadTaskDetails(){
+    await api.get(`/task/${match.params.id}`)
+    .then(response =>{
+      setType(response.data.type)
+      setTitle(response.data.title)
+      setDescription(response.data.description)
+      setDate(format(new Date(response.data.when),'yyyy-MM-dd'))
+      setHour(format(new Date(response.data.when),'HH:mm'))
+    })
+  }
+
+// função para salvar tarefas
   async function save(){
-     await api.post('/task', {
+    if(match.params.id){
+      await api.put(`/task/${match.params.id}`, {
+        macaddress,
+        done,
+        type,
+        title,
+        description,
+        when: `${date}T${hour}:00.000` 
+      })
+      .then( ()=>{
+        setRedirect(true)
+      })
+     
+    }else{
+       await api.post('/task', {
        macaddress,
        type,
        title,
@@ -44,19 +71,21 @@ function Task() {
        when: `${date}T${hour}:00.000` 
      })
      .then( ()=>{
-       alert('Tarefa Cadastrada com Sucesso')
+       setRedirect(true)
      })
-     
+    } 
   }
 
  
   useEffect(()=>{
    
     lateVerify();
+    LoadTaskDetails();
   },[])
 
   return (
     <S.Container>
+      { redirect && <Redirect to="/" />}
       <Header lateCount = {lateCount}/>
         <S.Formulario>
             <S.TypeIcons>
