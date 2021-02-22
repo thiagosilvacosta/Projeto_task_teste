@@ -28,7 +28,36 @@ export const Content = styled.div `
 
 export const QrCodeArea = styled.div `
     width: 100%;
-    height: 400px;
-    border: 1px solid red;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
+`
+export const ValidationCode = styled.div `
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+    span{
+         text-transform: uppercase;
+         font-weight: bold;
+         margin-bottom: 5px;
+    }
+    input{
+        margin-bottom:10px;
+        font-size: 1.2em;
+        padding: 5px;
+    }
+    button{
+        font-size: 1.2em;
+        padding: 7px;
+        font-weight: bold;
+        background: #EE6B26;
+        border:none;
+        border-radius: 5px;
+        color: #FFF;
+    }
+
+
 `
