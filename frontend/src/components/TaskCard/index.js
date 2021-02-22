@@ -6,13 +6,13 @@ import TypeIcons from '../../utils/TypeIcons'
 
 
 
-function TaskCard({title, type, when}) {
+function TaskCard({title, type, when, done}) {
 
   const date = useMemo(()=>format(new Date(when), 'dd / MM / yyyy'));
     const hour =  useMemo(()=>format(new Date(when), "HH:mm"));
 
   return  (
-      <S.Container>
+      <S.Container done={done}>
         <S.TopCard>
           <img src={TypeIcons[type]} alt="Icone da tarefa"/>
           <h4>{title}</h4>

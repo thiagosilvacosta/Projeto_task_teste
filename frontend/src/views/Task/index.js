@@ -40,6 +40,7 @@ function Task({match}) {
     await api.get(`/task/${match.params.id}`)
     .then(response =>{
       setType(response.data.type)
+      setDone(response.data.done)
       setTitle(response.data.title)
       setDescription(response.data.description)
       setDate(format(new Date(response.data.when),'yyyy-MM-dd'))
@@ -49,6 +50,20 @@ function Task({match}) {
 
 // função para salvar tarefas
   async function save(){
+
+    // validaçção de campos
+
+    if(!type)
+      return alert('Você precisa selecionar um tipo paara a tarefa, clique e selecione o icone no inicio da tela!')
+    else if(!title)
+      return alert('Você precisa informar um título para a tarefa!')
+    else if(!description)
+      return alert('Preencha a Descrição da Tarefa!')
+    else if(!date)
+      return alert('preencha a data da tarefa!')
+    else if(!hour)
+      return alert('preencha a hora da tarefa!')
+
     if(match.params.id){
       await api.put(`/task/${match.params.id}`, {
         macaddress,
@@ -76,6 +91,17 @@ function Task({match}) {
     } 
   }
 
+  async function Remove(){
+    const res = window.confirm('Deseja realmente remover a tarefa?')
+    if(res == true){
+      await api.delete(`/task/${match.params.id}`)
+      .then(()=>{
+        setRedirect(true)
+      })
+    }
+   }
+  
+ 
  
   useEffect(()=>{
    
@@ -122,7 +148,7 @@ function Task({match}) {
                   <input type="checkbox" id="done" checked={done} onChange={()=> setDone(!done)}/>
                   <span for="done">Concluído</span>
                 </div>
-                  <button type="button">Excluir</button>
+                  { match.params.id && <button type="button" onClick={Remove}>Excluir</button>}
               </S.Options>
               <S.Save>
                 <button type="button" onClick={save}>Salvar</button>
