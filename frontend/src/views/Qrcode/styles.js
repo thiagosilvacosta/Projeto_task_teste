@@ -48,6 +48,7 @@ export const ValidationCode = styled.div `
         margin-bottom:10px;
         font-size: 1.2em;
         padding: 5px;
+        text-align: center;
     }
     button{
         font-size: 1.2em;
@@ -55,8 +56,13 @@ export const ValidationCode = styled.div `
         font-weight: bold;
         background: #EE6B26;
         border:none;
-        border-radius: 5px;
+        border-radius: 20px;
         color: #FFF;
+        cursor: pointer;
+
+        &:hover{
+            background: #20295F;
+        }
     }
 
 

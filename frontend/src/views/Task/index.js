@@ -3,6 +3,7 @@ import * as S from  './styles'
 import {format} from 'date-fns' 
 import api from '../../services/api'
 import { Redirect } from 'react-router-dom'
+import isConected from '../../utils/isConected';
 
 // Importando components
 
@@ -24,7 +25,7 @@ function Task({match}) {
   const [description, setDescription]=useState();
   const [date, setDate]=useState();
   const [hour, setHour]=useState();
-  const [macaddress, setMacaddress]=useState('11-11-11-11-11-11');
+  
   
 
 
@@ -60,7 +61,7 @@ function Task({match}) {
 
     if(match.params.id){
       await api.put(`/task/${match.params.id}`, {
-        macaddress,
+        macaddress: isConected,
         done,
         type,
         title,
@@ -73,7 +74,7 @@ function Task({match}) {
      
     }else{
        await api.post('/task', {
-       macaddress,
+       macaddress:isConected,
        type,
        title,
        description,
@@ -98,7 +99,9 @@ function Task({match}) {
  
  
   useEffect(()=>{
-   
+    if(!isConected){
+      setRedirect(true)
+    }
     LoadTaskDetails();
   },[])
 

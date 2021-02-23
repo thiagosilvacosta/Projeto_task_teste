@@ -2,25 +2,34 @@ import React, {useEffect, useState} from 'react'
 import Logo from '../../assets/logo.png';
 import bell from '../../assets/bell.png';
 import * as S from './styles';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
-import api from '../../services/api'
+import api from '../../services/api';
+import isConected from '../../utils/isConected';
 
 
 function Header({ clickNotification}) {
 
-  const [lateCount, setLateCount] = useState()
+  const [lateCount, setLateCount] = useState();
 
   async function lateVerify(){
-    await api.get(`task/filter/late/11-11-11-11-11-11`)
+    await api.get(`task/filter/late/${isConected}`)
     .then(response =>{
-      setLateCount(response.data.length)
+      setLateCount(response.data.length);
     })
   }
 
+
+
+
   useEffect(()=>{
-    lateVerify()
+    lateVerify();
   })
+
+  async function Logout(){
+    localStorage.removeItem('@todo/macaddress')
+    window.location.reload();
+  }
 
   return  (
       <S.Container>
@@ -32,7 +41,12 @@ function Header({ clickNotification}) {
             <span className="dividir"/>
             <Link to="/task">Nova Tarefa</Link>
             <span className="dividir"/>
-            <Link to="/qrcode">Sincronizar Celular</Link>
+            {
+              !isConected ? <Link to="/qrcode">Sincronizar Celular</Link> :  <button type="button" onClick={Logout}>Sair</button>
+            }
+            
+           
+           
             {
               lateCount &&
               <>

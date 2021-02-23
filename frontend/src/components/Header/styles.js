@@ -28,12 +28,16 @@ export const RightSide = styled.div `
     align-items: center;
     justify-content: flex-end;
 
-a{
+a,button{
     color:#FFF;
     font-size:1.1em;
     font-weight: bold;
     text-decoration: none;
     margin: 0 10px;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
 
     &:hover{
         color:#EE6B26;
