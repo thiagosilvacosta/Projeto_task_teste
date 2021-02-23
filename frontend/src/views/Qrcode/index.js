@@ -19,7 +19,7 @@ function QrCode() {
                     <h1>CAPTURE O QRCODE PELO APP</h1>
                     <p>Suas atividades serão sincronizadas com o seu Celular</p>
                     <S.QrCodeArea> 
-                        <Qr value ="Evaldo Tchola" size={250}/>          
+                        <Qr value ="Luizinho tcholinha" size={200}/>          
                     </S.QrCodeArea>
                     <S.ValidationCode>
                         <span>Digite a numeração que apareceu no celular</span>

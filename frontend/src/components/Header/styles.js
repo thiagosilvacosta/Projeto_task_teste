@@ -59,7 +59,7 @@ a{
         font-size:0.7em;
         color:#EE6B26;
         border-radius: 50%;
-        padding: 1px 6px;
+        padding: 1px 5px;
         position:relative;
         top:-20px;
         left: -15px;
